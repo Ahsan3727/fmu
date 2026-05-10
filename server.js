@@ -37,7 +37,10 @@ app.use(cors({
  origin: ['https://fmu-mn0b.onrender.com', 'http://localhost:3000'],
    credentials: true,
 }));
-
+// Root route for health checks or welcome
+app.get('/', (req, res) => {
+    res.json({ success: true, message: 'FMU Backend is running!' });
+});
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use("/api", limiter);
